@@ -1673,36 +1673,6 @@ static int qcedev_check_cipher_params(struct qcedev_cipher_op_req *req,
 		goto error;
 	}
 
-	/* Verify Source Address's */
-	for (i = 0, total = 0; i < req->entries; i++) {
-		if (total < req->data_len) {
-			if (!access_ok(VERIFY_READ,
-				(void __user *)req->vbuf.src[i].vaddr,
-					req->vbuf.src[i].len)) {
-					pr_err("%s:SRC RD_VERIFY err %d=0x%lx\n",
-						__func__, i, (uintptr_t)
-							req->vbuf.src[i].vaddr);
-					goto error;
-			}
-			total += req->vbuf.src[i].len;
-		}
-	}
-
-	/* Verify Destination Address's */
-	for (i = 0, total = 0; i < QCEDEV_MAX_BUFFERS; i++) {
-		if ((req->vbuf.dst[i].vaddr != 0) &&
-			(total < req->data_len)) {
-			if (!access_ok(VERIFY_WRITE,
-				(void __user *)req->vbuf.dst[i].vaddr,
-					req->vbuf.dst[i].len)) {
-					pr_err("%s:DST WR_VERIFY err %d=0x%lx\n",
-						__func__, i, (uintptr_t)
-							req->vbuf.dst[i].vaddr);
-					goto error;
-			}
-			total += req->vbuf.dst[i].len;
-		}
-	}
 	return 0;
 error:
 	return -EINVAL;
@@ -1830,12 +1800,13 @@ static long qcedev_ioctl(struct file *file, unsigned cmd, unsigned long arg)
 		if (__copy_to_user((void __user *)arg,
 					&qcedev_areq.cipher_op_req,
 					sizeof(struct qcedev_cipher_op_req)))
-				return -EFAULT;
+			return -EFAULT;
 		break;
 
 	case QCEDEV_IOCTL_SHA_INIT_REQ:
 		{
 		struct scatterlist sg_src;
+
 		if (!access_ok(VERIFY_WRITE, (void __user *)arg,
 				sizeof(struct qcedev_sha_op_req)))
 			return -EFAULT;
@@ -1852,7 +1823,7 @@ static long qcedev_ioctl(struct file *file, unsigned cmd, unsigned long arg)
 			return err;
 		if (__copy_to_user((void __user *)arg, &qcedev_areq.sha_op_req,
 					sizeof(struct qcedev_sha_op_req)))
-				return -EFAULT;
+			return -EFAULT;
 		}
 		handle->sha_ctxt.init_done = true;
 		break;
@@ -1862,6 +1833,7 @@ static long qcedev_ioctl(struct file *file, unsigned cmd, unsigned long arg)
 	case QCEDEV_IOCTL_SHA_UPDATE_REQ:
 		{
 		struct scatterlist sg_src;
+
 		if (!access_ok(VERIFY_WRITE, (void __user *)arg,
 				sizeof(struct qcedev_sha_op_req)))
 			return -EFAULT;
@@ -1930,6 +1902,7 @@ static long qcedev_ioctl(struct file *file, unsigned cmd, unsigned long arg)
 	case QCEDEV_IOCTL_GET_SHA_REQ:
 		{
 		struct scatterlist sg_src;
+
 		if (!access_ok(VERIFY_WRITE, (void __user *)arg,
 				sizeof(struct qcedev_sha_op_req)))
 			return -EFAULT;
