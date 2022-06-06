@@ -1,4 +1,4 @@
-/* Copyright (c) 2012-2014, The Linux Foundation. All rights reserved.
+﻿/* Copyright (c) 2012-2014, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -672,7 +672,7 @@ int output_buffer_cache_invalidate(struct msm_vidc_inst *inst,
 				return -EINVAL;
 			}
 		} else
-			dprintk(VIDC_ERR, "%s: WARN: NULL handle", __func__);
+      dprintk(VIDC_DBG, "%s: NULL handle for plane %d\n", __func__, i);
 	}
 	return 0;
 }

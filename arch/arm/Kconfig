@@ -2469,6 +2469,34 @@ config ARM_CPU_SUSPEND
 
 endmenu
 
+#ifdef FEATURE_SKY_DS_KERNEL_CONFIG
+menu "SKY Data Kernel Configuration"
+
+config SKY_DS_CTS_ICMPV6_ECHO_REQUEST
+	bool "icmpv6 echo request test(cts)"
+	default y
+	help
+
+config SKY_DS_ANDROID_SECURITY_PATCH_CVE_2014_2851
+	bool "net: ipv4: current group_info should be put after using."
+	default y
+	help
+	  Plug a group_info refcount leak in ping_init. 
+	  group_info is only needed during initialization and 
+	  the code failed to release the reference on exit. 
+	  While here move grabbing the reference to a place 
+	  where it is actually needed.
+	
+config SKY_DS_ANDROID_SECURITY_PATCH_CVE_2014_4943
+	bool "Arbitrary kernel code execution via PPPOL2TP -ID: CVE-2014-4943"
+	default y
+	help
+	  Since this can never have worked so nobody could possibly have depended 
+	  on that functionality, just remove the broken code and return -EINVAL.
+	  
+endmenu
+#endif /* FEATURE_SKY_DS_KERNEL_CONFIG */
+
 source "net/Kconfig"
 
 source "drivers/Kconfig"

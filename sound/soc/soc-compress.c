@@ -153,7 +153,6 @@ static int soc_compr_open_fe(struct snd_compr_stream *cstream)
 	cpu_dai->active++;
 	codec_dai->active++;
 	fe->codec->active++;
-
 	mutex_unlock(&fe->card->dpcm_mutex);
 
 	return 0;
@@ -272,7 +271,6 @@ static int soc_compr_free_fe(struct snd_compr_stream *cstream)
 		stream = SNDRV_PCM_STREAM_PLAYBACK;
 	else
 		stream = SNDRV_PCM_STREAM_CAPTURE;
-
 	mutex_lock(&fe->card->dpcm_mutex);
 	if (cstream->direction == SND_COMPRESS_PLAYBACK) {
 		cpu_dai->playback_active--;
@@ -321,7 +319,6 @@ static int soc_compr_free_fe(struct snd_compr_stream *cstream)
 	if (platform->driver->compr_ops && platform->driver->compr_ops->free)
 		platform->driver->compr_ops->free(cstream);
 	//cpu_dai->runtime = NULL;
-
 	mutex_unlock(&fe->card->dpcm_mutex);
 	return 0;
 }
@@ -486,7 +483,6 @@ static int soc_compr_set_params_fe(struct snd_compr_stream *cstream,
 	hw_params = kzalloc(sizeof(*hw_params), GFP_KERNEL);
 	if (hw_params == NULL)
 		return -ENOMEM;
-
 	mutex_lock(&fe->card->dpcm_mutex);
 	/* first we call set_params for the platform driver
 	 * this should configure the soc side

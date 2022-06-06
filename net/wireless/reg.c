@@ -1184,6 +1184,9 @@ void regulatory_update(struct wiphy *wiphy,
 		       enum nl80211_reg_initiator setby)
 {
 	mutex_lock(&reg_mutex);
+	if (last_request)
+		wiphy_update_regulatory(wiphy, last_request->initiator);
+	else
 	wiphy_update_regulatory(wiphy, setby);
 	mutex_unlock(&reg_mutex);
 }

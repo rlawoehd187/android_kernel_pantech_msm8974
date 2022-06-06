@@ -4148,12 +4148,25 @@ static int selinux_socket_unix_stream_connect(struct sock *sock,
 static int selinux_socket_unix_may_send(struct socket *sock,
 					struct socket *other)
 {
-	struct sk_security_struct *ssec = sock->sk->sk_security;
-	struct sk_security_struct *osec = other->sk->sk_security;
+	/* 20140519 LS1-JHM modified : PLM EF62L_KK #01410 NULL pointer dereference */
+	struct sk_security_struct *ssec;// = sock->sk->sk_security;
+	struct sk_security_struct *osec;// = other->sk->sk_security;
 	struct common_audit_data ad;
 	struct selinux_audit_data sad = {0,};
 	struct lsm_network_audit net = {0,};
 
+	/* 20140519 LS1-JHM modified : PLM EF62L_KK #01410 NULL pointer dereference */
+	if (unlikely(!sock) || unlikely(!sock->sk) || unlikely(!sock->sk->sk_security)
+		|| unlikely(!other) || unlikely(!other->sk) || unlikely(!other->sk->sk_security) ) {
+		pr_warn("SELinux: socket is NULL\n");
+		pr_err("[JHM] SELinux: socket is NULL\n");
+		return -EINVAL;
+	}
+	
+	/* 20140519 LS1-JHM modified : PLM EF62L_KK #01410 NULL pointer dereference */
+	ssec = sock->sk->sk_security;
+	osec = other->sk->sk_security;
+	
 	COMMON_AUDIT_DATA_INIT(&ad, NET);
 	ad.selinux_audit_data = &sad;
 	ad.u.net = &net;
