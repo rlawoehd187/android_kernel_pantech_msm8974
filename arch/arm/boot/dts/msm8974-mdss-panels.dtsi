@@ -20,3 +20,6 @@
 /include/ "dsi-panel-r63311-1080p-video-ef60.dtsi"
 /include/ "dsi-panel-ams529-1080p-cmd-ef63.dtsi"
 /include/ "dsi-panel-ams529-1080p-cmd-ef63-ws10.dtsi"
+/include/ "dsi-panel-ams529-1080p-cmd-ef63-ws20.dtsi"
+/include/ "dsi-panel-ams529-1080p-cmd-ef63-tp10.dtsi"
+/include/ "dsi-panel-ams529-1080p-cmd-ef63-tp20.dtsi"

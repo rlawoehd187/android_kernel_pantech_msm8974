@@ -765,9 +765,14 @@ aliases { /* DMB_SPI */
 	};
 
 	mpp@a100 { /* MPP 2 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
-		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		reg = <0xa100 0x100>; 
+		qcom,mode = <4>; /* Analog Input */ 
+		qcom,pin-num = <2>; 
+		qcom,invert = <0>; /*No Invert */ 
+		qcom,ain-route = <1>;	/* AMUX6 */
+		qcom,vin-sel = <2>; /* QPNP_PIN_VIN2*/ 
 		qcom,master-en = <1>;
+		qcom,src-sel = <0>; /* Function constant */ 
 	};
 
 	mpp@a200 { /* MPP 3 */

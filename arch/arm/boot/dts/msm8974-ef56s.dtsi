@@ -272,7 +272,7 @@
 
 &pm8941_lsid1 {
 	qcom,leds@d800 {
-		status = "okay";
+		status = "disabled";
 		qcom,wled_0 {
 			label = "wled";
 			linux,name = "wled:backlight";
@@ -484,8 +484,11 @@
 &pm8941_gpios {
 	gpio@c000 { /* GPIO 1 */
 		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
-		qcom,pull = <0>;        /* QPNP_PIN_PULL_UP_30  */
-		qcom,master-en = <1>;
+		//qcom,pull = <0>;      /* QPNP_PIN_PULL_UP_30  */
+		qcom,pull = <4>;	// pull down
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
+
 	};
 
 	gpio@c100 { /* GPIO 2 */
@@ -496,18 +499,22 @@
 
 	gpio@c200 { /* GPIO 3 */
 		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
-		qcom,pull = <0>;        /* QPNP_PIN_PULL_UP_30  */
+		//qcom,pull = <0>;      /* QPNP_PIN_PULL_UP_30  */
+		qcom,pull = <4>;	// pull down
 		qcom,vin-sel = <2>;
 		qcom,src-sel = <0>;	/* QPNP_PIN_SEL_FUNC_CONSTANT */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@c300 { /* GPIO 4 */
 		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
-		qcom,pull = <0>;        /* QPNP_PIN_PULL_UP_30  */
+		//qcom,pull = <0>;      /* QPNP_PIN_PULL_UP_30  */
+		qcom,pull = <4>;	// pull down
 		qcom,vin-sel = <2>;     /* QPNP_PIN_VIN2  */
 		qcom,src-sel = <0>;	/* QPNP_PIN_SEL_FUNC_CONSTANT */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>;	// Disable GPIO with Hi-Z 
 	};
 
 	gpio@c400 { /* GPIO 5 */
@@ -521,61 +528,84 @@
 	gpio@c500 { /* GPIO 6 */
 		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
 		qcom,pull = <0>;        /* QPNP_PIN_PULL_UP_30  */
+		qcom,vin-sel = <2>;     /* QPNP_PIN_VIN2  */
 		qcom,master-en = <1>;
 	};
 
 	gpio@c600 { /* GPIO 7 */
 		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
-		qcom,pull = <0>;        /* QPNP_PIN_PULL_UP_30  */
-		qcom,master-en = <1>;
+		//qcom,pull = <0>;      /* QPNP_PIN_PULL_UP_30  */
+		qcom,pull = <4>; 	// pull down
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@c700 { /* GPIO 8 */
 		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
-		qcom,pull = <0>;        /* QPNP_PIN_PULL_UP_30  */
-		qcom,master-en = <1>;
+		//qcom,pull = <0>;        /* QPNP_PIN_PULL_UP_30  */
+		qcom,pull = <4>; 	// pull down
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; //Disable GPIO with Hi-Z
 	};
 
 	gpio@c800 { /* GPIO 9 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;	/* QPNP_PIN_MODE_DIG_IN */
+		qcom,pull = <4>; 	// pull down
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>;	//Disable GPIO with Hi-Z
 	};
 
 	gpio@c900 { /* GPIO 10 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;	/* QPNP_PIN_MODE_DIG_IN */
+		qcom,pull = <4>; 	// pull down
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; //Disable GPIO with Hi-Z
 	};
 
 	gpio@ca00 { /* GPIO 11 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;	/* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		qcom,pull = <4>; 	// pull down
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; //Disable GPIO with Hi-Z
 	};
 
 	gpio@cb00 { /* GPIO 12 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;	/* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		qcom,pull = <4>; 	// pull down
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; //Disable GPIO with Hi-Z
 	};
 
 	gpio@cc00 { /* GPIO 13 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;	/* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		qcom,pull = <4>; 	// pull down
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; //Disable GPIO with Hi-Z
 	};
 
 	gpio@cd00 { /* GPIO 14 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;	/* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		qcom,pull = <4>; 	// pull down
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; //Disable GPIO with Hi-Z
 	};
 
 	gpio@ce00 { /* GPIO 15 */
@@ -589,36 +619,51 @@
 	};
 
 	gpio@cf00 { /* GPIO 16 */
-		qcom,mode = <1>;
+		//qcom,mode = <1>;
+		qcom,mode = <0>;	/* QPNP_PIN_MODE_DIG_IN */
 		qcom,output-type = <0>;
-		qcom,pull = <5>;
+		//qcom,pull = <5>;
+		qcom,pull = <4>; 	// pull down
 		qcom,vin-sel = <2>;
 		qcom,out-strength = <3>;
 		qcom,src-sel = <3>;       /* QPNP_PIN_SEL_FUNC_2  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>;	//Disable GPIO with Hi-Z
 	};
 
 	gpio@d000 { /* GPIO 17 */
+		qcom,mode = <0>;	/* QPNP_PIN_MODE_DIG_IN */
+		qcom,pull = <4>; 	// pull down
+		qcom,master-en = <0>;	//Disable GPIO with Hi-Z
 	};
 
 	gpio@d100 { /* GPIO 18 */
+		qcom,mode = <0>;	/* QPNP_PIN_MODE_DIG_IN */
+		qcom,pull = <4>; 	// pull down
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@d200 { /* GPIO 19 */
-		qcom,mode = <1>;		/* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;		/* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;		/* QPNP_PIN_MODE_DIG_IN */
 		qcom,output-type = <0>;		/* QPNP_PIN_OUT_BUF_CMOS */
-		qcom,pull = <5>;		/* QPNP_PIN_PULL_NO */
+		//qcom,pull = <5>;		/* QPNP_PIN_PULL_NO */
+		qcom,pull = <4>; 		// pull down
 		qcom,vin-sel = <2>;		/* QPNP_PIN_VIN2 */
 		qcom,out-strength = <1>;	/* QPNP_PIN_OUT_STRENGTH_LOW */
 		qcom,src-sel = <0>;		/* QPNP_PIN_SEL_FUNC_CONSTANT */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@d300 { /* GPIO 20 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;		/* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		qcom,pull = <4>; 		// pull down
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@d400 { /* GPIO 21 */
@@ -627,35 +672,47 @@
 	gpio@d500 { /* GPIO 22 */
 		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
 		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
-		qcom,master-en = <1>;
+		qcom,master-en = <0>;
 	};
 
 	gpio@d600 { /* GPIO 23 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@d700 { /* GPIO 24 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@d800 { /* GPIO 25 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@d900 { /* GPIO 26 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		//qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
 		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@da00 { /* GPIO 27 */
@@ -668,16 +725,15 @@
 	};
 
 	gpio@dc00 { /* GPIO 29 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
-		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
-		qcom,src-sel = <2>;       /* QPNP_PIN_SEL_FUNC_1  */
-		qcom,master-en = <1>;
+		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
+		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@dd00 { /* GPIO 30 */
 		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
 		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
-		qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@de00 { /* GPIO 31 */
@@ -696,23 +752,27 @@
 	gpio@e000 { /* GPIO 33 */
 		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
 		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
-		qcom,master-en = <1>;
+		qcom,master-en = <0>;
 	};
 
 	gpio@e100 { /* GPIO 34 */
 		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
 		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
-		qcom,master-en = <1>;
+		//qcom,master-en = <1>;
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 
 	gpio@e200 { /* GPIO 35 */
-		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
-		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
+		qcom,mode = <0>;
+		qcom,pull = <4>; /* set to default pull */
 		qcom,master-en = <1>;
 		qcom,vin-sel = <2>; /* select 1.8 V source */
 	};
 
 	gpio@e300 { /* GPIO 36 */
+		qcom,mode = <0>;        /* QPNP_PIN_MODE_DIG_IN */
+		qcom,pull = <4>;	/* QPNP_PIN_PULL_DN */
+		qcom,master-en = <0>; 	//Disable GPIO with Hi-Z
 	};
 };
 
@@ -737,6 +797,9 @@
 	};
 
 	mpp@a300 { /* MPP 4 */
+		qcom,mode = <0>;          /* QPNP_PIN_MODE_DIG_IN */
+		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
+		qcom,master-en = <0>;	/* QPNP_PIN_MASTER_DISABLE */
 	};
 
 	mpp@a400 { /* MPP 5 */
@@ -753,15 +816,15 @@
 	};
 
 	mpp@a600 { /* MPP 7 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;          /* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
-		qcom,master-en = <1>;
+		qcom,master-en = <0>;	/* QPNP_PIN_MASTER_DISABLE */
 	};
 
 	mpp@a700 { /* MPP 8 */
-		qcom,mode = <1>;          /* QPNP_PIN_MODE_DIG_OUT */
+		qcom,mode = <0>;          /* QPNP_PIN_MODE_DIG_IN */
 		qcom,out-strength = <1>;  /* QPNP_PIN_OUT_STRENGTH_LOW */
-		qcom,master-en = <1>;
+		qcom,master-en = <0>;	/* QPNP_PIN_MASTER_DISABLE */
 	};
 };
 

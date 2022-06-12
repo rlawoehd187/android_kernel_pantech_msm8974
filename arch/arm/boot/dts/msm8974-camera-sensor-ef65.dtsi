@@ -82,7 +82,7 @@
 		qcom,cam-vreg-op-mode = <0 80000>;		
 		qcom,gpio-no-mux = <0>;
 		gpios = <&msmgpio 15 0>,
-			<&msmgpio 58 0>,
+			<&msmgpio 96 0>,
 			<&msmgpio 90 0>;
 		qcom,avdd-en = <1>;
 		qcom,gpio-reset = <2>;
@@ -123,9 +123,9 @@
 		qcom,gpio-no-mux = <0>;
 		gpios = <&msmgpio 15 0>,
 			<&msmgpio 90 0>,
-			<&msmgpio 57 0>,
+			<&msmgpio 95 0>,
 			<&msmgpio 81 0>,
-			<&msmgpio 58 0>;
+			<&msmgpio 96 0>;
 		qcom,gpio-reset = <1>;
 		qcom,svdd0-en = <2>;
 		qcom,svdd1-en = <3>;

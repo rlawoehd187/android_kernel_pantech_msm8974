@@ -479,7 +479,6 @@
 			qcom,ldo-default-voltage = <750000>;
 			qcom,ldo-threshold-voltage = <850000>;
 			qcom,ldo-delta-voltage = <50000>;
-			qcom,ldo-disable;
 			qcom,cpu-num = <0>;
 		};
 
@@ -496,7 +495,6 @@
 			qcom,ldo-default-voltage = <750000>;
 			qcom,ldo-threshold-voltage = <850000>;
 			qcom,ldo-delta-voltage = <50000>;
-			qcom,ldo-disable;
 			qcom,cpu-num = <1>;
 		};
 
@@ -513,7 +511,6 @@
 			qcom,ldo-default-voltage = <750000>;
 			qcom,ldo-threshold-voltage = <850000>;
 			qcom,ldo-delta-voltage = <50000>;
-			qcom,ldo-disable;
 			qcom,cpu-num = <2>;
 		};
 
@@ -530,7 +527,6 @@
 			qcom,ldo-default-voltage = <750000>;
 			qcom,ldo-threshold-voltage = <850000>;
 			qcom,ldo-delta-voltage = <50000>;
-			qcom,ldo-disable;
 			qcom,cpu-num = <3>;
 		};
 	};
