@@ -758,6 +758,8 @@ static void dma_cache_maint_page(struct page *page, unsigned long offset,
 				len = PAGE_SIZE - offset;
 
 			if (cache_is_vipt_nonaliasing()) {
+
+				/* unmapped pages might still be cached */
 				vaddr = kmap_atomic(page);
 				op(vaddr + offset, len, dir);
 				kunmap_atomic(vaddr);
