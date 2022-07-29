@@ -31,6 +31,7 @@
 #include <linux/notifier.h>
 #include <linux/fb.h>
 #include <mach/msm_smsm.h>
+#include <linux/wakelock.h>
 
 #define FEATURE_WORKAROUND_NC_CHARGER	1
 
