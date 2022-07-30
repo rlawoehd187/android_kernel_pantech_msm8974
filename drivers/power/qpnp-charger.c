@@ -32,6 +32,7 @@
 #include <linux/qpnp-revid.h>
 #include <linux/android_alarm.h>
 #include <linux/spinlock.h>
+#include <linux/wakelock.h>
 
 #if defined(CONFIG_PANTECH_PMIC_MONITOR_TEST)
 #include <linux/proc_fs.h>
