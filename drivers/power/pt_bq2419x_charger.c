@@ -17,7 +17,7 @@
 #include <linux/regulator/machine.h>
 #include <linux/of_batterydata.h>
 #include <linux/qpnp-revid.h>
-#include <linux/android_alarm.h>
+#include <linux/hrtimer.h>
 #include <linux/spinlock.h>
 #include <linux/i2c.h>
 #include <linux/gpio.h>
